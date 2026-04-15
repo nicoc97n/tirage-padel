@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Padel Draw — NeoLife</title>
+<title>Padel Draw — Champions Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -31,7 +31,6 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-
 .app { max-width: 860px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
 
 /* NAV */
@@ -40,6 +39,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .nav-btn:hover { color: var(--text); background: var(--bg2); }
 .nav-btn.active { background: var(--navy); color: #fff; }
 
+/* HEADER — épuré, sans logo ni branding */
 .header {
   text-align: center;
   padding: 3rem 1.5rem 2.5rem;
@@ -51,99 +51,14 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   overflow: hidden;
   box-shadow: 0 6px 24px rgba(0,0,0,0.06);
 }
-
-/* ligne gold plus élégante */
-.header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-/* icône plus légère */
-.header-icon {
-  font-size: 34px;
-  display: block;
-  margin-bottom: 14px;
-  opacity: 0.85;
-}
-
-/* TITRE plus impactant */
-.header-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 46px;
-  letter-spacing: 10px;
-  color: var(--navy);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-/* étoiles plus discrètes */
-.header-title span {
-  color: var(--gold);
-  font-size: 22px;
-  vertical-align: middle;
-  margin: 0 6px;
-}
-
-/* sous-titre mieux espacé */
-.header-sub {
-  font-size: 10px;
-  letter-spacing: 7px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 8px;
-  opacity: 0.9;
-}
-
-/* branding plus propre */
-.header-brand {
-  font-size: 11px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 14px;
-  font-weight: 600;
-}
-
-/* logo mieux intégré */
-.header-logo {
-  margin-top: 18px;
-}
-
-.header-logo img {
-  max-height: 55px;
-  max-width: 160px;
-  object-fit: contain;
-  opacity: 0.85;
-  filter: grayscale(10%);
-}
-
-/* dots plus élégants */
-.dot-row {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 18px;
-}
-
-.dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--gold);
-  opacity: 0.25;
-}
-
-.dot.big {
-  width: 7px;
-  height: 7px;
-  opacity: 0.9;
-}
-
+.header::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.header-icon { font-size: 34px; display: block; margin-bottom: 14px; opacity: 0.85; }
+.header-title { font-family: 'Bebas Neue', sans-serif; font-size: 46px; letter-spacing: 10px; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+.header-title span { color: var(--gold); font-size: 22px; vertical-align: middle; margin: 0 6px; }
+.header-sub { font-size: 10px; letter-spacing: 7px; text-transform: uppercase; color: var(--gold); margin-top: 8px; opacity: 0.9; }
+.dot-row { display: flex; justify-content: center; gap: 6px; margin-top: 18px; }
+.dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.25; }
+.dot.big { width: 7px; height: 7px; opacity: 0.9; }
 
 /* LABELS */
 .slabel { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; font-weight: 600; }
@@ -197,17 +112,118 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .error-box { background: #fdf0f0; border: 1px solid #f5c6c6; border-radius: var(--radius-sm); color: var(--red); padding: 12px 16px; font-size: 13px; margin-bottom: 1rem; display: none; }
 .info-box { background: var(--blue-bg); border: 1px solid #c5d5f5; border-radius: var(--radius-sm); padding: 12px 16px; font-size: 12px; color: var(--blue); margin-bottom: 1.25rem; line-height: 1.7; }
 
-/* CEREMONY */
-.ceremony { position: fixed; inset: 0; background: rgba(26,32,80,0.97); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+/* ═══════════════════════════════════
+   CÉRÉMONIE DE TIRAGE
+═══════════════════════════════════ */
+.ceremony {
+  position: fixed; inset: 0;
+  background: rgba(20, 25, 70, 0.98);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.4s;
+}
 .ceremony.show { opacity: 1; pointer-events: all; }
+
+/* Phase 1 : spinner */
+.cer-spinner { display: flex; flex-direction: column; align-items: center; }
 .cer-ring { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--gold-light); border-top-color: transparent; margin-bottom: 24px; animation: spin 0.9s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .cer-label { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 6px; color: var(--gold-light); }
 .cer-sub { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 6px; }
 
+/* Phase 2 : révélation */
+.cer-reveal { display: none; flex-direction: column; align-items: center; width: 100%; max-width: 480px; padding: 0 2rem; }
+.cer-reveal.active { display: flex; }
+
+.reveal-team-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 20px;
+  font-family: 'DM Sans', sans-serif; font-weight: 600;
+}
+
+.reveal-balls {
+  display: flex; gap: 20px; justify-content: center;
+  margin-bottom: 32px;
+}
+
+.reveal-ball {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif; font-size: 28px;
+  color: rgba(255,255,255,0.15);
+  position: relative; overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal-ball.revealed {
+  background: var(--gold);
+  border-color: var(--gold-light);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(184,149,63,0.5);
+}
+
+.reveal-ball .ball-question {
+  position: absolute;
+  font-size: 28px;
+  color: rgba(255,255,255,0.15);
+  transition: opacity 0.3s;
+}
+.reveal-ball.revealed .ball-question { opacity: 0; }
+
+.reveal-ball .ball-name {
+  position: absolute;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  padding: 4px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.4s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  line-height: 1.2;
+}
+.reveal-ball.revealed .ball-name { opacity: 1; transform: scale(1); }
+
+.reveal-vs {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px; letter-spacing: 4px;
+  color: rgba(255,255,255,0.2);
+  margin: 0 4px;
+  align-self: center;
+  margin-bottom: 32px;
+}
+
+.reveal-team-names {
+  text-align: center; margin-bottom: 28px; min-height: 32px;
+}
+.reveal-player-name {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; letter-spacing: 3px;
+  color: var(--gold-light);
+  opacity: 0; transform: translateY(10px);
+  transition: all 0.5s ease;
+  margin: 0 6px;
+}
+.reveal-player-name.show { opacity: 1; transform: translateY(0); }
+
+.reveal-progress {
+  display: flex; gap: 6px; margin-top: 8px;
+}
+.prog-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transition: background 0.3s;
+}
+.prog-dot.done { background: var(--gold); }
+
 /* TEAMS */
 .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 1.75rem; }
-.tcard { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; position: relative; overflow: hidden; box-shadow: var(--shadow); }
+.tcard { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; position: relative; overflow: hidden; box-shadow: var(--shadow); opacity: 0; transform: translateY(16px); transition: all 0.5s ease; }
+.tcard.visible { opacity: 1; transform: translateY(0); }
 .tcard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
 .tcard-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; font-weight: 600; }
 .prow { display: flex; align-items: center; gap: 10px; padding: 5px 0; font-size: 14px; font-weight: 600; color: var(--text); }
@@ -297,7 +313,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .hist-match:last-child { border-bottom: none; }
 .hist-score { font-weight: 700; color: var(--text); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; }
 .hist-winner { color: var(--green); font-size: 10px; letter-spacing: 1px; font-weight: 600; }
-
 .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-dim); }
 .empty-icon { font-size: 40px; display: block; margin-bottom: 12px; }
 .empty-text { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
@@ -308,15 +323,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 </head>
 <body>
 <div class="app">
-
   <div class="header">
     <span class="header-icon">🏆</span>
     <div class="header-title"><span>★</span> Padel Draw <span>★</span></div>
     <div class="header-sub">Champions Edition</div>
-    <div class="header-brand">Padel Draw NeoLife</div>
-    <div class="header-logo">
-      <img src="logo.jpeg" alt="NeoLife Logo" onerror="this.style.display='none'">
-    </div>
     <div class="dot-row"><div class="dot"></div><div class="dot"></div><div class="dot big"></div><div class="dot"></div><div class="dot"></div></div>
   </div>
 
@@ -326,7 +336,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
     <button class="nav-btn" onclick="showPage('historique')">Historique</button>
   </div>
 
-  <!-- TIRAGE -->
   <div class="page active" id="page-tirage">
     <div id="setup-section">
       <div class="slabel">Nombre de joueurs</div>
@@ -336,19 +345,11 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         <button class="size-btn" onclick="setSize(6)"><div>6</div><div class="size-sub">joueurs</div></button>
         <button class="size-btn" onclick="setSize(8)"><div>8</div><div class="size-sub">joueurs</div></button>
       </div>
-
       <div class="slabel">Format des scores</div>
       <div class="format-row">
-        <div class="fmt-btn active" id="fmt-sets" onclick="setFormat('sets')">
-          <div class="fmt-title">Sets</div>
-          <div class="fmt-sub">6-3 / 6-4 / 10-7</div>
-        </div>
-        <div class="fmt-btn" id="fmt-tb" onclick="setFormat('tb')">
-          <div class="fmt-title">Tie-break</div>
-          <div class="fmt-sub">Premier à 10</div>
-        </div>
+        <div class="fmt-btn active" id="fmt-sets" onclick="setFormat('sets')"><div class="fmt-title">Sets</div><div class="fmt-sub">6-3 / 6-4 / 10-7</div></div>
+        <div class="fmt-btn" id="fmt-tb" onclick="setFormat('tb')"><div class="fmt-title">Tie-break</div><div class="fmt-sub">Premier à 10</div></div>
       </div>
-
       <div class="slabel">Joueurs &nbsp;<span style="color:var(--text-dim);font-size:9px;letter-spacing:1px">★ = capitaine (séparé des autres)</span></div>
       <div class="player-grid" id="player-grid"></div>
       <div class="error-box" id="error-box"></div>
@@ -356,7 +357,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
     </div>
 
     <div id="result-section" style="display:none">
-      <!-- MODE NORMAL -->
       <div id="mode-normal" style="display:none">
         <div class="slabel">Équipes</div>
         <div class="teams-grid" id="teams-display"></div>
@@ -372,14 +372,10 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
         </div>
       </div>
 
-      <!-- MODE 5 -->
       <div id="mode-5" style="display:none">
         <div class="slabel">Rotation</div>
-        <div class="info-box">
-          Règle mexicaine — les <strong>vainqueurs restent</strong>, le <strong>joueur en attente entre</strong> du côté perdant, les perdants vont en fin de file.
-        </div>
+        <div class="info-box">Règle mexicaine — les <strong>vainqueurs restent</strong>, le <strong>joueur en attente entre</strong> du côté perdant, les perdants vont en fin de file.</div>
         <div class="rotation-list" id="rotation-display"></div>
-
         <div id="match5-zone">
           <div class="slabel" id="match5-label">Match en cours</div>
           <div id="current-match-display"></div>
@@ -387,31 +383,26 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
           <button class="validate-btn" onclick="validateMatch5()">✓ &nbsp;&nbsp; Valider ce match &nbsp;&nbsp; ✓</button>
           <button class="end-btn" onclick="endSession5()">■ &nbsp;&nbsp; Terminer la session &nbsp;&nbsp; ■</button>
         </div>
-
         <div id="match5-ranking" style="display:none">
           <div class="slabel">Classement en cours</div>
           <table class="ranking-table" id="match5-table"></table>
           <button class="next-btn" onclick="nextMatch5()">→ &nbsp;&nbsp; Match suivant &nbsp;&nbsp; →</button>
           <button class="end-btn" onclick="endSession5()">■ &nbsp;&nbsp; Terminer la session &nbsp;&nbsp; ■</button>
         </div>
-
         <div id="session5-done" style="display:none">
           <div class="slabel">Classement final</div>
           <table class="ranking-table" id="session5-table"></table>
         </div>
       </div>
-
       <button class="reset-btn" onclick="resetDraw()">↺ &nbsp; Nouveau tirage</button>
     </div>
   </div>
 
-  <!-- CLASSEMENT -->
   <div class="page" id="page-classement">
     <div class="slabel">Classement général</div>
     <div id="general-ranking-content"></div>
   </div>
 
-  <!-- HISTORIQUE -->
   <div class="page" id="page-historique">
     <div class="slabel" style="margin-bottom:0">Historique
       <button class="del-btn" onclick="clearHistory()" style="margin-left:auto">Effacer tout</button>
@@ -420,41 +411,54 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   </div>
 </div>
 
+<!-- CÉRÉMONIE -->
 <div class="ceremony" id="ceremony">
-  <div class="cer-ring"></div>
-  <div class="cer-label">Tirage en cours</div>
-  <div class="cer-sub">Padel Draw NeoLife</div>
+  <!-- Phase 1 : spinner -->
+  <div class="cer-spinner" id="cer-spinner">
+    <div class="cer-ring"></div>
+    <div class="cer-label">Tirage en cours</div>
+    <div class="cer-sub">Champions Edition</div>
+  </div>
+  <!-- Phase 2 : révélation équipe par équipe -->
+  <div class="cer-reveal" id="cer-reveal">
+    <div class="reveal-team-label" id="reveal-team-label">Équipe 1</div>
+    <div class="reveal-balls" id="reveal-balls">
+      <div class="reveal-ball" id="ball-0"><span class="ball-question">?</span><span class="ball-name" id="ball-name-0"></span></div>
+      <div class="reveal-ball" id="ball-1"><span class="ball-question">?</span><span class="ball-name" id="ball-name-1"></span></div>
+    </div>
+    <div class="reveal-progress" id="reveal-progress"></div>
+  </div>
 </div>
 
 <script>
-let playerCount = 5, scoreFormat = 'sets', players = [], currentTeams = [];
-let rotation5 = [], matchHistory5 = [], stats5 = {}, currentMatch5 = null, matchNum5 = 0, session5Ended = false;
+let playerCount=5, scoreFormat='sets', players=[], currentTeams=[];
+let rotation5=[], matchHistory5=[], stats5={}, currentMatch5=null, matchNum5=0, session5Ended=false;
 
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.querySelectorAll('.nav-btn')[['tirage','classement','historique'].indexOf(id)].classList.add('active');
-  if (id==='classement') renderGeneralRanking();
-  if (id==='historique') renderHistory();
+  if(id==='classement') renderGeneralRanking();
+  if(id==='historique') renderHistory();
 }
 
 function setSize(n) {
-  playerCount = n;
+  playerCount=n;
   document.querySelectorAll('.size-btn').forEach((b,i)=>b.classList.toggle('active',[4,5,6,8][i]===n));
   buildGrid(); hideError();
 }
 
 function setFormat(f) {
-  scoreFormat = f;
+  scoreFormat=f;
   document.getElementById('fmt-sets').classList.toggle('active',f==='sets');
   document.getElementById('fmt-tb').classList.toggle('active',f==='tb');
 }
 
 function buildGrid() {
-  const grid = document.getElementById('player-grid'); grid.innerHTML = '';
+  const grid=document.getElementById('player-grid'); grid.innerHTML='';
   const prev=[...players];
-  players = Array.from({length:playerCount},(_,i)=>({name:prev[i]?.name||'',captain:prev[i]?.captain||false}));
+  players=Array.from({length:playerCount},(_,i)=>({name:prev[i]?.name||'',captain:prev[i]?.captain||false}));
   players.forEach((p,i)=>{
     const c=document.createElement('div'); c.className='pcard'+(p.captain?' cap':''); c.id='pcard-'+i;
     c.innerHTML=`<div class="pcard-num">Joueur ${i+1}</div>
@@ -464,25 +468,115 @@ function buildGrid() {
   });
 }
 
-function toggleCap(i) { players[i].captain=!players[i].captain; document.getElementById('pcard-'+i).classList.toggle('cap',players[i].captain); }
-function hideError() { document.getElementById('error-box').style.display='none'; }
-function showError(m) { const e=document.getElementById('error-box'); e.textContent=m; e.style.display='block'; }
-function shuffle(arr) { const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-function getPlayers() { return players.map((p,i)=>({name:p.name.trim()||'Joueur '+(i+1),captain:p.captain,idx:i})); }
-function initials(n) { return n.trim().split(/\s+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?'; }
-function tn(team) { return team.map(p=>p.name).join(' / '); }
+function toggleCap(i){players[i].captain=!players[i].captain;document.getElementById('pcard-'+i).classList.toggle('cap',players[i].captain);}
+function hideError(){document.getElementById('error-box').style.display='none';}
+function showError(m){const e=document.getElementById('error-box');e.textContent=m;e.style.display='block';}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function getPlayers(){return players.map((p,i)=>({name:p.name.trim()||'Joueur '+(i+1),captain:p.captain,idx:i}));}
+function initials(n){return n.trim().split(/\s+/).map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?';}
+function tn(team){return team.map(p=>p.name).join(' / ');}
 
+// ════════════════════════════════
+// DRAW + CÉRÉMONIE DRAMATIQUE
+// ════════════════════════════════
 function performDraw() {
   hideError();
   const ps=getPlayers(), caps=ps.filter(p=>p.captain), nonCaps=ps.filter(p=>!p.captain);
   if(playerCount!==5){const tc=playerCount/2;if(caps.length>tc){showError(`Trop de capitaines (${caps.length}) pour ${tc} équipes.`);return;}}
   else if(caps.length>2){showError('Maximum 2 capitaines pour le mode 5 joueurs.');return;}
-  document.getElementById('ceremony').classList.add('show');
+
+  // Calcul des équipes
+  let teams;
+  if(playerCount===5){
+    const c=shuffle(caps), nc=shuffle(nonCaps);
+    let ord=[];
+    if(c.length===2){const o=[...nc];ord=[c[0],o.shift(),c[1],o.shift(),o.shift()];}
+    else if(c.length===1){ord=[c[0],...nc];}
+    else ord=[...nc];
+    // Pour la cérémonie mode 5 : on crée 2 "équipes" du premier match
+    teams=[[[ord[0],ord[1]],[ord[2],ord[3]]],ord]; // on passe les données brutes
+  } else {
+    teams=buildTeams(caps,nonCaps,playerCount/2);
+  }
+
+  // Lance la cérémonie
+  startCeremony(teams, ps);
+}
+
+function startCeremony(teams, ps) {
+  const cer=document.getElementById('ceremony');
+  cer.classList.add('show');
+  document.getElementById('cer-spinner').style.display='flex';
+  document.getElementById('cer-reveal').classList.remove('active');
+
+  // Phase 1 : spinner pendant 1.5s
   setTimeout(()=>{
-    document.getElementById('ceremony').classList.remove('show');
-    if(playerCount===5) initMode5(ps);
-    else { currentTeams=buildTeams(caps,nonCaps,playerCount/2); displayNormal(currentTeams); }
-  },1900);
+    document.getElementById('cer-spinner').style.display='none';
+
+    if(playerCount===5){
+      // Mode 5 : on révèle juste les 4 joueurs du premier match
+      const ord=teams[1];
+      const fakeTeams=[[ord[0],ord[1]],[ord[2],ord[3]]];
+      revealTeams(fakeTeams, ()=>{
+        cer.classList.remove('show');
+        initMode5(ps);
+      });
+    } else {
+      revealTeams(teams, ()=>{
+        cer.classList.remove('show');
+        displayNormal(teams);
+      });
+    }
+  }, 1500);
+}
+
+function revealTeams(teams, onDone) {
+  const reveal=document.getElementById('cer-reveal');
+  reveal.classList.add('active');
+
+  // Crée les points de progression
+  const prog=document.getElementById('reveal-progress');
+  prog.innerHTML=teams.map((_,i)=>`<div class="prog-dot" id="prog-${i}"></div>`).join('');
+
+  let teamIdx=0;
+  function revealNextTeam() {
+    if(teamIdx>=teams.length){
+      setTimeout(onDone, 600);
+      return;
+    }
+    const team=teams[teamIdx];
+    document.getElementById('reveal-team-label').textContent=`Équipe ${teamIdx+1}`;
+
+    // Reset balls
+    const b0=document.getElementById('ball-0'), b1=document.getElementById('ball-1');
+    b0.classList.remove('revealed'); b1.classList.remove('revealed');
+    document.getElementById('ball-name-0').textContent='';
+    document.getElementById('ball-name-1').textContent='';
+
+    // Balle 1 : révélation après 600ms
+    setTimeout(()=>{
+      document.getElementById('ball-name-0').textContent=firstWord(team[0].name);
+      b0.classList.add('revealed');
+    }, 600);
+
+    // Balle 2 : révélation après 1400ms
+    setTimeout(()=>{
+      document.getElementById('ball-name-1').textContent=firstWord(team[1].name);
+      b1.classList.add('revealed');
+      // Progress dot
+      document.getElementById('prog-'+teamIdx).classList.add('done');
+      teamIdx++;
+      // Équipe suivante après pause
+      setTimeout(revealNextTeam, 1200);
+    }, 1400);
+  }
+
+  revealNextTeam();
+}
+
+function firstWord(name) {
+  // Prénom seulement pour tenir dans la balle
+  return name.split(' ')[0];
 }
 
 function buildTeams(caps,nonCaps,tc) {
@@ -493,19 +587,27 @@ function buildTeams(caps,nonCaps,tc) {
   return teams;
 }
 
+// ════════════════════════════════
+// MODE NORMAL
+// ════════════════════════════════
 function displayNormal(teams) {
+  currentTeams=teams;
   document.getElementById('setup-section').style.display='none';
   document.getElementById('result-section').style.display='block';
   document.getElementById('mode-normal').style.display='block';
   document.getElementById('mode-5').style.display='none';
   document.getElementById('session-ranking').style.display='none';
+
   const td=document.getElementById('teams-display'); td.innerHTML='';
   teams.forEach((team,i)=>{
     const c=document.createElement('div'); c.className='tcard';
     c.innerHTML=`<div class="tcard-label">Équipe ${i+1}</div>`+
       team.map(p=>`<div class="prow"><div class="avatar ${p.captain?'cap':''}">${initials(p.name)}</div>${p.name}${p.captain?'<span style="color:var(--gold);margin-left:4px;font-size:11px">★</span>':''}</div>`).join('');
     td.appendChild(c);
+    // Animation d'apparition décalée
+    setTimeout(()=>c.classList.add('visible'), i*150);
   });
+
   const bz=document.getElementById('bracket-zone');
   if(playerCount===4) renderBracket4(teams,bz);
   else if(playerCount===8) renderBracket8(teams,bz);
@@ -513,50 +615,45 @@ function displayNormal(teams) {
   buildScoreInputsNormal(teams);
 }
 
-function renderBracket4(teams,c) {
-  c.innerHTML=`<div class="slabel" style="margin-bottom:1rem">Tableau</div>
-    <div class="bracket-wrap"><div style="max-width:360px;margin:0 auto"><div class="mbox">
-      <div class="mrow"><span class="mseed">1</span>${tn(teams[0])}</div>
-      <div class="vs-line">VS</div>
-      <div class="mrow"><span class="mseed">2</span>${tn(teams[1])}</div>
-    </div></div></div>`;
-}
+function renderBracket4(teams,c){c.innerHTML=`<div class="slabel" style="margin-bottom:1rem">Tableau</div>
+  <div class="bracket-wrap"><div style="max-width:360px;margin:0 auto"><div class="mbox">
+    <div class="mrow"><span class="mseed">1</span>${tn(teams[0])}</div>
+    <div class="vs-line">VS</div>
+    <div class="mrow"><span class="mseed">2</span>${tn(teams[1])}</div>
+  </div></div></div>`;}
 
-function renderBracket8(teams,c) {
-  c.innerHTML=`<div class="slabel" style="margin-bottom:1rem">Tableau élimination directe</div>
-    <div class="bracket-wrap"><div class="bracket">
-      <div class="round"><div class="round-name">Demi-finales</div>
-        <div class="mbox" style="margin-bottom:14px">
-          <div class="mrow"><span class="mseed">1</span>${tn(teams[0])}</div><div class="vs-line">VS</div>
-          <div class="mrow"><span class="mseed">4</span>${tn(teams[3])}</div></div>
-        <div class="mbox"><div class="mrow"><span class="mseed">2</span>${tn(teams[1])}</div><div class="vs-line">VS</div>
-          <div class="mrow"><span class="mseed">3</span>${tn(teams[2])}</div></div></div>
-      <div style="display:flex;flex-direction:column;align-items:center;width:28px;padding-top:28px">
-        <div style="width:12px;height:1px;background:var(--border);margin-top:32px"></div>
-        <div style="width:1px;height:60px;background:var(--border)"></div>
-        <div style="width:12px;height:1px;background:var(--gold);opacity:0.4"></div>
-        <div style="width:1px;height:60px;background:var(--border)"></div>
-        <div style="width:12px;height:1px;background:var(--border);margin-bottom:32px"></div>
-      </div>
-      <div class="round"><div class="round-name">Finale</div>
-        <div class="mbox" style="margin-top:34px">
-          <div class="mrow"><span class="mseed">?</span>Vainqueur DF1</div><div class="vs-line">VS</div>
-          <div class="mrow"><span class="mseed">?</span>Vainqueur DF2</div></div>
-        <div style="margin-top:18px"><div class="round-name" style="margin-bottom:8px">Petite finale</div>
-          <div class="mbox"><div class="mrow"><span class="mseed">?</span>Perdant DF1</div><div class="vs-line">VS</div>
-            <div class="mrow"><span class="mseed">?</span>Perdant DF2</div></div></div></div>
-    </div></div>`;
-}
+function renderBracket8(teams,c){c.innerHTML=`<div class="slabel" style="margin-bottom:1rem">Tableau élimination directe</div>
+  <div class="bracket-wrap"><div class="bracket">
+    <div class="round"><div class="round-name">Demi-finales</div>
+      <div class="mbox" style="margin-bottom:14px">
+        <div class="mrow"><span class="mseed">1</span>${tn(teams[0])}</div><div class="vs-line">VS</div>
+        <div class="mrow"><span class="mseed">4</span>${tn(teams[3])}</div></div>
+      <div class="mbox"><div class="mrow"><span class="mseed">2</span>${tn(teams[1])}</div><div class="vs-line">VS</div>
+        <div class="mrow"><span class="mseed">3</span>${tn(teams[2])}</div></div></div>
+    <div style="display:flex;flex-direction:column;align-items:center;width:28px;padding-top:28px">
+      <div style="width:12px;height:1px;background:var(--border);margin-top:32px"></div>
+      <div style="width:1px;height:60px;background:var(--border)"></div>
+      <div style="width:12px;height:1px;background:var(--gold);opacity:0.4"></div>
+      <div style="width:1px;height:60px;background:var(--border)"></div>
+      <div style="width:12px;height:1px;background:var(--border);margin-bottom:32px"></div>
+    </div>
+    <div class="round"><div class="round-name">Finale</div>
+      <div class="mbox" style="margin-top:34px">
+        <div class="mrow"><span class="mseed">?</span>Vainqueur DF1</div><div class="vs-line">VS</div>
+        <div class="mrow"><span class="mseed">?</span>Vainqueur DF2</div></div>
+      <div style="margin-top:18px"><div class="round-name" style="margin-bottom:8px">Petite finale</div>
+        <div class="mbox"><div class="mrow"><span class="mseed">?</span>Perdant DF1</div><div class="vs-line">VS</div>
+          <div class="mrow"><span class="mseed">?</span>Perdant DF2</div></div></div></div>
+  </div></div>`;}
 
-function renderOrder6(teams,c) {
+function renderOrder6(teams,c){
   const s=shuffle([[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]]);
   c.innerHTML=`<div class="slabel" style="margin-bottom:1rem">Ordre des matchs — Round robin</div><div class="order-list">`+
     s.map((m,i)=>`<div class="oitem"><div class="onum">${i+1}</div><div class="oinfo">
       <div class="omatchup">${tn(teams[m[0]])} <span class="ovs">VS</span> ${tn(teams[m[1]])}</div>
-      <div class="oeq">Équipe ${m[0]+1} — Équipe ${m[1]+1}</div></div></div>`).join('')+'</div>';
-}
+      <div class="oeq">Équipe ${m[0]+1} — Équipe ${m[1]+1}</div></div></div>`).join('')+'</div>';}
 
-function scoreHTML(id) {
+function scoreHTML(id){
   if(scoreFormat==='tb') return `<div class="score-row"><div class="set-group">
     <span class="set-label">TB</span>
     <input class="score-in" id="${id}_tb_a" type="number" min="0" max="99" placeholder="0">
@@ -576,25 +673,20 @@ function scoreHTML(id) {
       <input class="score-in" id="${id}_tb_a" type="number" min="0" max="99" placeholder="—">
       <span class="score-sep">—</span>
       <input class="score-in" id="${id}_tb_b" type="number" min="0" max="99" placeholder="—"></div>
-  </div>`;
-}
+  </div>`;}
 
-function parseResult(id) {
+function parseResult(id){
   const iv=x=>parseInt(document.getElementById(x)?.value)||0;
   if(scoreFormat==='tb'){const a=iv(id+'_tb_a'),b=iv(id+'_tb_b');return{winA:a>b,gfA:a,gaA:b};}
   const s1a=iv(id+'_s1_a'),s1b=iv(id+'_s1_b'),s2a=iv(id+'_s2_a'),s2b=iv(id+'_s2_b'),tba=iv(id+'_tb_a'),tbb=iv(id+'_tb_b');
   const hasTb=tba+tbb>0;
   const sA=(s1a>s1b?1:0)+(s2a>s2b?1:0)+(hasTb&&tba>tbb?1:0);
   const sB=(s1b>s1a?1:0)+(s2b>s2a?1:0)+(hasTb&&tbb>tba?1:0);
-  return{winA:sA>sB,gfA:s1a+s2a+tba,gaA:s1b+s2b+tbb};
-}
+  return{winA:sA>sB,gfA:s1a+s2a+tba,gaA:s1b+s2b+tbb};}
 
-function getMatchupsNormal() {
-  const n=currentTeams.length;
-  if(n===2)return[[0,1]];if(n===3)return[[0,1],[0,2],[1,2]];if(n===4)return[[0,3],[1,2]];return[];
-}
+function getMatchupsNormal(){const n=currentTeams.length;if(n===2)return[[0,1]];if(n===3)return[[0,1],[0,2],[1,2]];if(n===4)return[[0,3],[1,2]];return[];}
 
-function buildScoreInputsNormal(teams) {
+function buildScoreInputsNormal(teams){
   const ms=getMatchupsNormal();
   if(!ms.length){document.getElementById('score-section').style.display='none';return;}
   document.getElementById('score-section').style.display='block';
@@ -604,28 +696,27 @@ function buildScoreInputsNormal(teams) {
     d.innerHTML=`<div class="score-match-label">Match ${i+1}</div>
       <div class="score-matchup">${tn(teams[m[0]])} <span style="color:var(--gold);margin:0 6px;font-weight:700">vs</span> ${tn(teams[m[1]])}</div>
       ${scoreHTML('m'+i)}`;
-    list.appendChild(d);
-  });
-}
+    list.appendChild(d);});}
 
-function validateScoresNormal() {
-  const ms=getMatchupsNormal(), st={};
+function validateScoresNormal(){
+  const ms=getMatchupsNormal(),st={};
   currentTeams.forEach(team=>team.forEach(p=>{st[p.name]={name:p.name,pts:0,wins:0,matches:0,gf:0,ga:0};}));
   const saved=[];
   ms.forEach((m,i)=>{
     const r=parseResult('m'+i),tA=currentTeams[m[0]],tB=currentTeams[m[1]];
     tA.forEach(p=>{st[p.name].matches++;st[p.name].gf+=r.gfA;st[p.name].ga+=r.gaA;if(r.winA){st[p.name].wins++;st[p.name].pts+=3;}});
     tB.forEach(p=>{st[p.name].matches++;st[p.name].gf+=r.gaA;st[p.name].ga+=r.gfA;if(!r.winA){st[p.name].wins++;st[p.name].pts+=3;}});
-    saved.push({teamA:tn(tA),teamB:tn(tB),scoreA:r.gfA,scoreB:r.gaA,winA:r.winA});
-  });
+    saved.push({teamA:tn(tA),teamB:tn(tB),scoreA:r.gfA,scoreB:r.gaA,winA:r.winA});});
   const sorted=Object.values(st).sort((a,b)=>b.pts-a.pts||(b.gf-b.ga)-(a.gf-a.ga));
   renderRankTable(sorted,'session-table');
   document.getElementById('session-ranking').style.display='block';
   document.getElementById('score-section').style.display='none';
-  saveSession(saved,sorted,playerCount);
-}
+  saveSession(saved,sorted,playerCount);}
 
-function initMode5(ps) {
+// ════════════════════════════════
+// MODE 5
+// ════════════════════════════════
+function initMode5(ps){
   document.getElementById('setup-section').style.display='none';
   document.getElementById('result-section').style.display='block';
   document.getElementById('mode-normal').style.display='none';
@@ -639,22 +730,17 @@ function initMode5(ps) {
   else ordered=[...nonCaps];
   rotation5=ordered; matchHistory5=[]; matchNum5=0; session5Ended=false; stats5={};
   ps.forEach(p=>{stats5[p.name]={name:p.name,pts:0,wins:0,matches:0,gf:0,ga:0};});
-  renderRotation5(); setupNextMatch5();
-}
+  renderRotation5(); setupNextMatch5();}
 
-function renderRotation5() {
+function renderRotation5(){
   document.getElementById('rotation-display').innerHTML=rotation5.map((p,i)=>{
-    const playing=i<4;
-    const tc=i<2?'badge-a':i<4?'badge-b':'badge-bench';
-    const tt=i<2?'Équipe A':i<4?'Équipe B':'En attente';
+    const playing=i<4,tc=i<2?'badge-a':i<4?'badge-b':'badge-bench',tt=i<2?'Équipe A':i<4?'Équipe B':'En attente';
     return `<div class="rot-item ${playing?'playing':''}">
       <div class="rot-num ${playing?'play':''}">${i+1}</div>
       <div class="rot-name">${p.name}${p.captain?' <span style="color:var(--gold);font-size:11px">★</span>':''}</div>
-      <div class="rot-badge ${tc}">${tt}</div></div>`;
-  }).join('');
-}
+      <div class="rot-badge ${tc}">${tt}</div></div>`;}).join('');}
 
-function setupNextMatch5() {
+function setupNextMatch5(){
   matchNum5++;
   const [p0,p1,p2,p3,bench]=rotation5;
   currentMatch5={teamA:[p0,p1],teamB:[p2,p3],bench};
@@ -662,78 +748,66 @@ function setupNextMatch5() {
   document.getElementById('current-match-display').innerHTML=`<div class="current-match-card">
     <div class="match-num-label">Match ${matchNum5}</div>
     <div class="match-vs"><span class="match-team">${tn(currentMatch5.teamA)}</span>
-      <span class="match-vs-sep">VS</span>
-      <span class="match-team">${tn(currentMatch5.teamB)}</span></div>
+      <span class="match-vs-sep">VS</span><span class="match-team">${tn(currentMatch5.teamB)}</span></div>
     <div class="match-bench">En attente : <strong>${bench.name}</strong></div></div>`;
   document.getElementById('match5-score-inputs').innerHTML=`<div class="score-item">${scoreHTML('m5')}</div>`;
   document.getElementById('match5-zone').style.display='block';
-  document.getElementById('match5-ranking').style.display='none';
-}
+  document.getElementById('match5-ranking').style.display='none';}
 
-function validateMatch5() {
-  if(session5Ended) return;
+function validateMatch5(){
+  if(session5Ended)return;
   const r=parseResult('m5'),{teamA,teamB,bench}=currentMatch5;
   teamA.forEach(p=>{stats5[p.name].matches++;stats5[p.name].gf+=r.gfA;stats5[p.name].ga+=r.gaA;if(r.winA){stats5[p.name].wins++;stats5[p.name].pts+=1;}});
   teamB.forEach(p=>{stats5[p.name].matches++;stats5[p.name].gf+=r.gaA;stats5[p.name].ga+=r.gfA;if(!r.winA){stats5[p.name].wins++;stats5[p.name].pts+=1;}});
   matchHistory5.push({teamA:tn(teamA),teamB:tn(teamB),scoreA:r.gfA,scoreB:r.gaA,winA:r.winA});
-  const winners=r.winA?[...teamA]:[...teamB], losers=r.winA?[...teamB]:[...teamA];
+  const winners=r.winA?[...teamA]:[...teamB],losers=r.winA?[...teamB]:[...teamA];
   rotation5=[...winners,bench,...losers];
   renderRotation5();
   const sorted=Object.values(stats5).sort((a,b)=>b.pts-a.pts||(b.wins-a.wins)||(b.gf-b.ga)-(a.gf-a.ga));
   renderRankTable(sorted,'match5-table');
   document.getElementById('match5-zone').style.display='none';
-  document.getElementById('match5-ranking').style.display='block';
-}
+  document.getElementById('match5-ranking').style.display='block';}
 
-function nextMatch5() { document.getElementById('match5-ranking').style.display='none'; setupNextMatch5(); }
+function nextMatch5(){document.getElementById('match5-ranking').style.display='none';setupNextMatch5();}
 
-function endSession5() {
-  if(session5Ended) return; session5Ended=true;
+function endSession5(){
+  if(session5Ended)return;session5Ended=true;
   const sorted=Object.values(stats5).sort((a,b)=>b.pts-a.pts||(b.wins-a.wins)||(b.gf-b.ga)-(a.gf-a.ga));
   saveSession(matchHistory5,sorted,5);
   renderRankTable(sorted,'session5-table');
   document.getElementById('match5-zone').style.display='none';
   document.getElementById('match5-ranking').style.display='none';
-  document.getElementById('session5-done').style.display='block';
-}
+  document.getElementById('session5-done').style.display='block';}
 
-function renderRankTable(sorted,tableId) {
+function renderRankTable(sorted,tableId){
   document.getElementById(tableId).innerHTML=`<thead><tr>
     <th style="text-align:left">Joueur</th><th>Pts</th><th>V</th><th>J</th><th>+/-</th>
   </tr></thead><tbody>`+
-  sorted.map((p,i)=>{
-    const pc=i===0?'gold':i===1?'silver':i===2?'bronze':'';
-    const d=p.gf-p.ga;
+  sorted.map((p,i)=>{const pc=i===0?'gold':i===1?'silver':i===2?'bronze':'';const d=p.gf-p.ga;
     return `<tr><td><span class="rank-pos ${pc}">${i+1}</span> <span class="rank-name">${p.name}</span></td>
-      <td><span class="pts-badge">${p.pts}</span></td>
-      <td><span class="win-badge">${p.wins}</span></td>
+      <td><span class="pts-badge">${p.pts}</span></td><td><span class="win-badge">${p.wins}</span></td>
       <td style="color:var(--text-muted)">${p.matches}</td>
-      <td class="${d>=0?'diff-pos':'diff-neg'}">${d>0?'+':''}${d}</td></tr>`;
-  }).join('')+'</tbody>';
-}
+      <td class="${d>=0?'diff-pos':'diff-neg'}">${d>0?'+':''}${d}</td></tr>`;}).join('')+'</tbody>';}
 
 function loadData(){try{return JSON.parse(localStorage.getItem('padel_data')||'{"sessions":[]}');}catch{return{sessions:[]};}}
 function saveData(d){localStorage.setItem('padel_data',JSON.stringify(d));}
 
-function saveSession(matches,standings,pCount) {
+function saveSession(matches,standings,pCount){
   const data=loadData();
   data.sessions.push({date:new Date().toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}),
     ts:Date.now(),playerCount:pCount,format:scoreFormat,matches,
     standings:standings.map(p=>({name:p.name,pts:p.pts,wins:p.wins,matches:p.matches,gf:p.gf,ga:p.ga}))});
-  updateGeneral(data); saveData(data);
-}
+  updateGeneral(data);saveData(data);}
 
-function updateGeneral(data) {
+function updateGeneral(data){
   const gen={};
   data.sessions.forEach(s=>s.standings.forEach(p=>{
     if(!gen[p.name])gen[p.name]={name:p.name,pts:0,wins:0,matches:0,gf:0,ga:0,sessions:0};
     gen[p.name].pts+=p.pts;gen[p.name].wins+=p.wins;gen[p.name].matches+=p.matches;
-    gen[p.name].gf+=p.gf;gen[p.name].ga+=p.ga;gen[p.name].sessions++;
-  }));
-  data.general=gen;
-}
+    gen[p.name].gf+=p.gf;gen[p.name].ga+=p.ga;gen[p.name].sessions++;}));
+  data.general=gen;}
 
-function renderGeneralRanking() {
+function renderGeneralRanking(){
   const data=loadData(),c=document.getElementById('general-ranking-content');
   if(!data.general||!Object.keys(data.general).length){
     c.innerHTML=`<div class="empty-state"><span class="empty-icon">📊</span><div class="empty-text">Aucune session enregistrée</div></div>`;return;}
@@ -741,22 +815,16 @@ function renderGeneralRanking() {
   c.innerHTML=`<table class="ranking-table"><thead><tr>
     <th style="text-align:left">Joueur</th><th>Pts</th><th>V</th><th>J</th><th>Sessions</th><th>+/-</th>
   </tr></thead><tbody>`+
-  sorted.map((p,i)=>{
-    const pc=i===0?'gold':i===1?'silver':i===2?'bronze':'';
-    const d=p.gf-p.ga,pct=p.matches?Math.round(p.wins/p.matches*100):0;
+  sorted.map((p,i)=>{const pc=i===0?'gold':i===1?'silver':i===2?'bronze':'';const d=p.gf-p.ga,pct=p.matches?Math.round(p.wins/p.matches*100):0;
     return `<tr><td><span class="rank-pos ${pc}">${i+1}</span> <span class="rank-name">${p.name}</span></td>
       <td><span class="pts-badge">${p.pts}</span></td>
       <td><span class="win-badge">${p.wins} <span style="font-size:10px;opacity:0.7">${pct}%</span></span></td>
-      <td style="color:var(--text-muted)">${p.matches}</td>
-      <td style="color:var(--text-muted)">${p.sessions}</td>
-      <td class="${d>=0?'diff-pos':'diff-neg'}">${d>0?'+':''}${d}</td></tr>`;
-  }).join('')+'</tbody></table>';
-}
+      <td style="color:var(--text-muted)">${p.matches}</td><td style="color:var(--text-muted)">${p.sessions}</td>
+      <td class="${d>=0?'diff-pos':'diff-neg'}">${d>0?'+':''}${d}</td></tr>`;}).join('')+'</tbody></table>';}
 
-function renderHistory() {
+function renderHistory(){
   const data=loadData(),c=document.getElementById('history-content');
-  if(!data.sessions?.length){
-    c.innerHTML=`<div class="empty-state"><span class="empty-icon">📅</span><div class="empty-text">Aucune session enregistrée</div></div>`;return;}
+  if(!data.sessions?.length){c.innerHTML=`<div class="empty-state"><span class="empty-icon">📅</span><div class="empty-text">Aucune session enregistrée</div></div>`;return;}
   c.innerHTML=[...data.sessions].reverse().map((s,i)=>`
     <div class="history-item">
       <div class="hist-header" onclick="toggleHist(${i})">
@@ -772,8 +840,7 @@ function renderHistory() {
         </div>`).join('')}
         <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
           ${s.standings.map((p,pi)=>`<span style="font-size:12px;color:${pi===0?'var(--gold)':'var(--text-muted)'};margin-right:12px">${pi+1}. ${p.name} <strong>${p.pts}pts</strong></span>`).join('')}
-        </div></div></div>`).join('');
-}
+        </div></div></div>`).join('');}
 
 function toggleHist(i){document.getElementById('hist-'+i).classList.toggle('open');}
 function clearHistory(){if(confirm('Effacer tout l\'historique et le classement général ?')){localStorage.removeItem('padel_data');renderHistory();renderGeneralRanking();}}
