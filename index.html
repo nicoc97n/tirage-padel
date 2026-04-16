@@ -519,7 +519,7 @@ function startCeremony(teams, ps) {
       const fakeTeams=[[ord[0],ord[1]],[ord[2],ord[3]]];
       revealTeams(fakeTeams, ()=>{
         cer.classList.remove('show');
-        initMode5(ps);
+        initMode5(ps, ord);
       });
     } else {
       revealTeams(teams, ()=>{
@@ -716,18 +716,20 @@ function validateScoresNormal(){
 // ════════════════════════════════
 // MODE 5
 // ════════════════════════════════
-function initMode5(ps){
+function initMode5(ps, precomputedOrder){
   document.getElementById('setup-section').style.display='none';
   document.getElementById('result-section').style.display='block';
   document.getElementById('mode-normal').style.display='none';
   document.getElementById('mode-5').style.display='block';
   document.getElementById('match5-ranking').style.display='none';
   document.getElementById('session5-done').style.display='none';
-  const caps=shuffle(ps.filter(p=>p.captain)), nonCaps=shuffle(ps.filter(p=>!p.captain));
-  let ordered=[];
-  if(caps.length===2){const o=[...nonCaps];ordered=[caps[0],o.shift(),caps[1],o.shift(),o.shift()];}
-  else if(caps.length===1){const o=[...nonCaps];ordered=[caps[0],...o];}
-  else ordered=[...nonCaps];
+  let ordered = precomputedOrder;
+  if(!ordered){
+    const caps=shuffle(ps.filter(p=>p.captain)), nonCaps=shuffle(ps.filter(p=>!p.captain));
+    if(caps.length===2){const o=[...nonCaps];ordered=[caps[0],o.shift(),caps[1],o.shift(),o.shift()];}
+    else if(caps.length===1){const o=[...nonCaps];ordered=[caps[0],...o];}
+    else ordered=[...nonCaps];
+  }
   rotation5=ordered; matchHistory5=[]; matchNum5=0; session5Ended=false; stats5={};
   ps.forEach(p=>{stats5[p.name]={name:p.name,pts:0,wins:0,matches:0,gf:0,ga:0};});
   renderRotation5(); setupNextMatch5();}
